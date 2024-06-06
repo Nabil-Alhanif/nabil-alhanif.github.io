@@ -1,0 +1,27 @@
+name: Convert Issue to HTML
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  convert_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: pip install PyGithub requests
+      
+      - name: Run conversion script
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python convert_issue_to_html.py
