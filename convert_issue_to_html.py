@@ -9,7 +9,7 @@ def convert_issue_to_html(issue_body):
 def main():
     issue_number = os.getenv('ISSUE_NUMBER')
     repo_name = os.getenv('GITHUB_REPOSITORY')
-    github_token = os.getenv('GITHUB_TOKEN')
+    github_token = os.getenv('MY_TOKEN')
     
     g = Github(github_token)
     repo = g.get_repo(repo_name)
