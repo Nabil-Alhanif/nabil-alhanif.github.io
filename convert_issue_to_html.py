@@ -19,7 +19,7 @@ def main():
     
     # Create a new branch
     branch_name = f'issue-{issue_number}-to-html'
-    base_branch = repo.get_branch('main')
+    base_branch = repo.get_branch('master')
     repo.create_git_ref(ref=f'refs/heads/{branch_name}', sha=base_branch.commit.sha)
     
     # Create a new file with the HTML content
