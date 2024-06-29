@@ -24,4 +24,4 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-        run: python convert_issue_to_html.py
+        run: python utils/convert_issue_to_html.py
