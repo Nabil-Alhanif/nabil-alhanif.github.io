@@ -18,6 +18,11 @@
 
 				<!-- Icons -->
 				<div class="mt-4 flex sm:mt-0 sm:justify-center">
+					<RouterLink
+						to="/credits"
+						class="ms-5 text-sm text-gray-500 hover:text-gray-900 hover:underline dark:hover:text-white sm:text-center"
+						>Credits</RouterLink
+					>
 					<InstagramIcon
 						href="https://instagram.com/nabil_alhanif"
 						class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
@@ -37,6 +42,8 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router'
+
 import InstagramIcon from '@/components/icons/InstagramIcon.vue'
 import GithubIcon from '@/components/icons/GithubIcon.vue'
 import LinkedinIcon from '@/components/icons/LinkedinIcon.vue'
