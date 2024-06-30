@@ -59,6 +59,16 @@ async function deploy() {
 		console.log('Copying index.html to 404.html...')
 		fs.copyFileSync('index.html', '404.html')
 
+		// Check if we should create a CNAME or not
+		if (process.env.TARGET_URL) {
+			console.log('Creating CNAME file...')
+			await fs.promises.writeFile(
+				path.join(buildDir, 'CNAME'),
+				process.env.TARGET_URL
+			)
+			console.log('CNAME file created successfully')
+		}
+
 		// Initialise a new Git repository
 		const git = simpleGit(buildDir)
 		console.log('Initialising git repository...')
@@ -84,7 +94,7 @@ async function deploy() {
 		console.log('Commiting changes...')
 		await git.commit('Deployed via script')
 
-		// Force pu sh to the gh-pages branch
+		// Force push to the gh-pages branch
 		console.log('Pushing to Github...')
 		await git.push('origin', 'HEAD:gh-pages', { '--force': null })
 
