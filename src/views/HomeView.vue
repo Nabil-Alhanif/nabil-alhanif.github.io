@@ -46,8 +46,11 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useBlogpostStore } from '@/stores/blogpost'
+
 import BlogCard from '@/components/BlogCard.vue'
 import RightArrowIcon from '@/components/icons/RightArrowIcon.vue'
 
-import { blogposts } from '@/data/blogposts'
+const blogposts = computed(() => useBlogpostStore().blogposts)
 </script>
