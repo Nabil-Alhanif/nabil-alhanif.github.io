@@ -1,12 +1,9 @@
 <template>
 	<nav class="border-gray-200 bg-white dark:bg-gray-900">
-		<div
-			class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
-		>
+		<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
 			<RouterLink to="/" class="flex items-center space-x-3">
 				<img src="@/assets/logo.svg" class="h-8" alt="Logo" />
-				<span
-					class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
+				<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
 					>Website</span
 				>
 			</RouterLink>
@@ -45,11 +42,7 @@
 						<RouterLink to="/about" class="nav-item">About</RouterLink>
 					</li>
 					<li>
-						<a
-							href="https://nabil-alhanif.github.io/portofolio/"
-							class="nav-item"
-							>Portfolio</a
-						>
+						<a href="https://nabil-alhanif.github.io/portofolio/" class="nav-item">Portfolio</a>
 					</li>
 				</ul>
 			</div>

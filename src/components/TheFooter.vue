@@ -1,19 +1,13 @@
 <template>
-	<footer
-		id="footer"
-		class="absolute bottom-4 left-0 z-20 w-full bg-white dark:bg-gray-900"
-	>
+	<footer id="footer" class="relative bottom-4 left-0 z-20 w-full bg-white dark:bg-gray-900">
 		<div class="mx-auto w-full max-w-screen-xl p-4 py-2 lg:py-8">
-			<hr
-				class="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8"
-			/>
+			<hr class="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" />
 
 			<div class="sm:flex sm:items-center sm:justify-between">
 				<span class="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
 					© 2024
-					<a href="https://malhanif.com/" class="hover:underline"
-						>Muhamad Nabil Alhanif</a
-					>. All Rights Reserved.
+					<a href="https://malhanif.com/" class="hover:underline">Muhamad Nabil Alhanif</a>. All
+					Rights Reserved.
 				</span>
 
 				<!-- Icons -->

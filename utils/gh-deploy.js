@@ -62,10 +62,7 @@ async function deploy() {
 		// Check if we should create a CNAME or not
 		if (process.env.TARGET_URL) {
 			console.log('Creating CNAME file...')
-			await fs.promises.writeFile(
-				path.join(buildDir, 'CNAME'),
-				process.env.TARGET_URL
-			)
+			await fs.promises.writeFile(path.join(buildDir, 'CNAME'), process.env.TARGET_URL)
 			console.log('CNAME file created successfully')
 		}
 
