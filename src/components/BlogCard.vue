@@ -3,61 +3,13 @@
 		class="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800"
 	>
 		<div class="mb-5 flex items-center justify-between text-gray-500">
-			<!-- Article Type -->
-			<span
-				v-if="blog.type.toLowerCase() === 'article'"
-				class="inline-flex items-center rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-200 dark:text-green-800"
-			>
-				<svg
-					class="mr-1 h-3 w-3"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-						clip-rule="evenodd"
-					></path>
-					<path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
-				</svg>
-				Article
-			</span>
+			<!-- Article Badge -->
+			<span :class="badgeClass">
+				<BadgeArticleIcon v-if="blogType === 'Article'" class="mr-1 h-3 w-3" />
+				<BadgeTutorialIcon v-else-if="blogType === 'Tutorial'" class="mr-1 h-3 w-3" />
+				<BadgeUnknownIcon v-else class="mr-1 h-3 w-3" />
 
-			<!-- Tutorial Type -->
-			<span
-				v-else-if="blog.type.toLowerCase() === 'tutorial'"
-				class="inline-flex items-center rounded bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-200 dark:text-blue-800"
-			>
-				<svg
-					class="mr-1 h-3 w-3"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"
-					></path>
-				</svg>
-				Tutorial
-			</span>
-
-			<!-- Unknown Type -->
-			<span
-				v-else
-				class="inline-flex items-center rounded bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-200 dark:text-red-800"
-			>
-				<svg
-					class="mr-1 h-3 w-3"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M15.2 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11.2a1 1 0 0 0 .747-.334l4.46-5a1 1 0 0 0 0-1.332l-4.46-5A1 1 0 0 0 15.2 6Z"
-					></path>
-				</svg>
-				Unknown
+				{{ blogType }}
 			</span>
 
 			<span class="text-sm">{{ getFormattedDate }}</span>
@@ -81,18 +33,7 @@
 				class="inline-flex items-center font-medium text-primary-600 hover:underline dark:text-primary-500"
 			>
 				Read more
-				<svg
-					class="ml-2 h-4 w-4"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-						clip-rule="evenodd"
-					></path>
-				</svg>
+				<ReadMoreIcon class="ml-2 h-4 w-4" />
 			</RouterLink>
 		</div>
 	</article>
@@ -104,6 +45,10 @@ import { formatDistanceToNow, format } from 'date-fns'
 import { RouterLink } from 'vue-router'
 
 import UserAvatarIcon from '@/components/icons/UserAvatarIcon.vue'
+import ReadMoreIcon from '@/components/icons/ReadMoreIcon.vue'
+import BadgeArticleIcon from '@/components/icons/Badge/ArticleIcon.vue'
+import BadgeTutorialIcon from '@/components/icons/Badge/TutorialIcon.vue'
+import BadgeUnknownIcon from '@/components/icons/Badge/UnknownIcon.vue'
 
 const props = defineProps({
 	blog: {
@@ -122,6 +67,28 @@ const props = defineProps({
 	}
 })
 
+const blogType = computed(() => {
+	const type = props.blog.type.toLowerCase()
+	if (type === 'article') {
+		return 'Article'
+	} else if (type === 'tutorial') {
+		return 'Tutorial'
+	} else {
+		return 'Unknown'
+	}
+})
+
+const badgeClass = computed(() => {
+	switch (blogType.value) {
+		case 'Article':
+			return 'badge bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-800'
+		case 'Tutorial':
+			return 'badge bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-800'
+		default:
+			return 'badge bg-red-100 text-red-800 dark:bg-red-200 dark:text-red-800'
+	}
+})
+
 const getFormattedDate = computed(() => {
 	const createdAtDate = new Date(props.blog.created_at)
 	const now = new Date()
@@ -136,3 +103,9 @@ const getFormattedDate = computed(() => {
 	}
 })
 </script>
+
+<style scoped>
+.badge {
+	@apply inline-flex items-center rounded px-2.5 py-0.5 text-xs font-medium;
+}
+</style>
