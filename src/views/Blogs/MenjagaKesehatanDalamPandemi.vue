@@ -1,36 +1,26 @@
 <template>
-	<main class="bg-white pb-16 pt-8 antialiased dark:bg-gray-900 lg:pb-24 lg:pt-16">
-		<div class="mx-auto flex max-w-screen-xl justify-between px-4">
-			<article
-				class="format format-sm format-blue mx-auto w-full max-w-2xl dark:format-invert sm:format-base lg:format-lg"
-			>
+	<main class="blog-main">
+		<div class="blog-container">
+			<article class="blog-article">
 				<!-- Title & Author -->
-				<header class="not-format mb-4 lg:mb-6">
-					<address class="mb-6 flex items-center not-italic">
-						<div class="mr-3 inline-flex items-center text-sm text-gray-900 dark:text-white">
-							<div
-								class="relative mr-4 size-16 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600"
-							>
-								<UserAvatarIcon class="absolute size-20 text-gray-400" />
+				<header class="not-format blog-header">
+					<address class="blog-address">
+						<div class="blog-avatar-container">
+							<div class="blog-avatar">
+								<UserAvatarIcon class="blog-avatar-icon" />
 							</div>
 							<div>
-								<a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white"
-									>Muhamad Nabil Alhanif</a
-								>
-								<p class="text-base text-gray-500 dark:text-gray-400">
+								<a href="#" rel="author" class="blog-avatar-name">Muhamad Nabil Alhanif</a>
+								<p class="blog-avatar-date">
 									<DateComponent :iso-date-string="created_at" message="Created on: " />
 								</p>
-								<p class="text-base text-gray-500 dark:text-gray-400">
+								<p class="blog-avatar-date">
 									<DateComponent :iso-date-string="edited_at" message="Last edited on: " />
 								</p>
 							</div>
 						</div>
 					</address>
-					<h1
-						class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:mb-6 lg:text-4xl"
-					>
-						Menjaga Kesehatan Dalam Pandemi
-					</h1>
+					<h1 class="blog-title">Menjaga Kesehatan Dalam Pandemi</h1>
 				</header>
 
 				<!-- Content Start -->
@@ -38,6 +28,7 @@
 					<img
 						src="/images/BlogMenjagaKesehatanDalamPandemi/menjaga_kesehatan_dalam_pandemi.png"
 						alt=""
+						class="blog-image"
 					/>
 					<figcaption>Poster singkat tentang menjaga kesehatan dalam pandemi</figcaption>
 				</figure>
@@ -55,12 +46,17 @@
 				</p>
 			</article>
 		</div>
+		<!-- Comment Section -->
+		<div class="blog-comment">
+			<TheComment />
+		</div>
 	</main>
 </template>
 
 <script setup>
 import UserAvatarIcon from '@/components/icons/UserAvatarIcon.vue'
 import DateComponent from '@/components/DateComponent.vue'
+import TheComment from '@/components/TheComment.vue'
 
 const created_at = '2021-03-21T05:00:00.000Z'
 const edited_at = '2024-07-01T03:16:00.000Z'
