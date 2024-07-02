@@ -17,18 +17,15 @@
 						class="ms-5 text-sm text-gray-500 hover:text-gray-900 hover:underline dark:hover:text-white sm:text-center"
 						>Credits</RouterLink
 					>
-					<InstagramIcon
-						href="https://instagram.com/nabil_alhanif"
-						class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
-					/>
-					<GithubIcon
-						href="https://github.com/Nabil-Alhanif"
-						class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
-					/>
-					<LinkedinIcon
-						href="https://www.linkedin.com/in/muhamad-nabil-alhanif-9a193a265/"
-						class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
-					/>
+					<a href="https://instagram.com/nabil_alhanif" target="_blank">
+						<InstagramIcon class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white" />
+					</a>
+					<a href="https://github.com/Nabil-Alhanif" target="_blank">
+						<GithubIcon class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white" />
+					</a>
+					<a href="https://www.linkedin.com/in/muhamad-nabil-alhanif-9a193a265/" target="_blank">
+						<LinkedinIcon class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white" />
+					</a>
 				</div>
 			</div>
 		</div>
