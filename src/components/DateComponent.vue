@@ -21,7 +21,9 @@ const props = defineProps({
 	}
 })
 
+console.log(props.isoDateString)
 const date = new Date(props.isoDateString)
+console.log(date)
 
 // Computed properties
 const formattedDate = computed(() => {

@@ -47,10 +47,10 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useBlogpostStore } from '@/stores/blogpost'
+import { useBlogStore } from '@/stores/BlogStore'
 
 import BlogCard from '@/components/BlogCard.vue'
 import RightArrowIcon from '@/components/icons/RightArrowIcon.vue'
 
-const blogposts = computed(() => useBlogpostStore().blogposts)
+const blogposts = computed(() => useBlogStore().posts)
 </script>

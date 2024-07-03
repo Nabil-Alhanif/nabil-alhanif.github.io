@@ -15,7 +15,7 @@
 			<span class="text-sm">{{ getFormattedDate }}</span>
 		</div>
 		<h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-			<RouterLink :to="blog.url">{{ blog.title }}</RouterLink>
+			<RouterLink :to="`/blogs/${blog.code}`">{{ blog.title }}</RouterLink>
 		</h2>
 		<p class="mb-5 font-light text-gray-500 dark:text-gray-400">
 			{{ blog.preview }}
@@ -29,7 +29,7 @@
 				<span class="font-medium dark:text-white">{{ blog.author }}</span>
 			</div>
 			<RouterLink
-				:to="blog.url"
+				:to="`/blogs/${blog.code}`"
 				class="inline-flex items-center font-medium text-primary-600 hover:underline dark:text-primary-500"
 			>
 				Read more
@@ -54,14 +54,14 @@ const props = defineProps({
 	blog: {
 		type: Object,
 		default: () => ({
-			title: 'How to quickly deploy a static website',
-			created_at: new Date().toISOString(),
-			edited_at: new Date().toISOString(),
+			title: 'A Blog Example',
+			createdAt: new Date().toISOString(),
+			editedAt: new Date().toISOString(),
 			type: 'unknown',
-			url: '/',
-			preview:
-				'Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers.',
-			author: 'Test Author'
+			code: 'example',
+			source: 'BlogExample.vue',
+			preview: 'This is an example of a blog',
+			author: 'Muhamad Nabil Alhanif'
 		}),
 		required: true
 	}
@@ -90,7 +90,7 @@ const badgeClass = computed(() => {
 })
 
 const getFormattedDate = computed(() => {
-	const createdAtDate = new Date(props.blog.created_at)
+	const createdAtDate = new Date(props.blog.createdAt)
 	const now = new Date()
 	const differenceInYears = now.getFullYear() - createdAtDate.getFullYear()
 
@@ -98,7 +98,7 @@ const getFormattedDate = computed(() => {
 		// Return text in the format "14 days ago" or "2 months ago"
 		return formatDistanceToNow(createdAtDate, { addSuffix: true })
 	} else {
-		// Returnm text in the format "26 August 2020"
+		// Return text in the format "26 August 2020"
 		return format(createdAtDate, 'dd MMMM yyyy')
 	}
 })

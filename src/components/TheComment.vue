@@ -14,7 +14,10 @@
 			lang="en"
 			crossorigin="anonymous"
 		/>
-		<p class="text-sm text-gray-500 dark:text-gray-400">Discussion powered by Giscus</p>
+		<p class="text-sm text-gray-500 dark:text-gray-400">
+			Discussion powered by
+			<a href="https://giscus.app" class="underline hover:no-underline">Giscus</a>
+		</p>
 	</div>
 </template>
 

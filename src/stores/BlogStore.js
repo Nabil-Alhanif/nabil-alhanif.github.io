@@ -5,19 +5,23 @@ import { blogposts } from '@/data/blogposts'
 function sortPostsByDate(posts) {
 	return posts.slice().sort((a, b) => {
 		// Convert timestamp into Date object
-		const dateA = new Date(a.created_at)
-		const dateB = new Date(b.created_at)
+		const dateA = new Date(a.createdAt)
+		const dateB = new Date(b.createdAt)
 
 		// Sort from newest to oldest
 		return dateB - dateA
 	})
 }
 
-export const useBlogpostStore = defineStore({
-	id: 'blogpost',
+export const useBlogStore = defineStore({
+	id: 'blog',
 	state: () => ({
-		blogposts: sortPostsByDate(blogposts)
+		posts: sortPostsByDate(blogposts)
 	}),
-	getters: {},
+	getters: {
+		getPostByTitle: (state) => (code) => {
+			return state.posts.find((post) => post.code === code)
+		}
+	},
 	actions: {}
 })
