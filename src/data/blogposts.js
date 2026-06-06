@@ -22,5 +22,15 @@ export const blogposts = [
 		source: 'MenjagaKesehatanDalamPandemi',
 		preview: 'Tugas PJOK Kelas 10',
 		author: 'Muhamad Nabil Alhanif'
+	},
+	{
+		title: 'Gabut Bersama Kak Althaaf',
+		createdAt: '2026-06-05T23:55:00.000Z',
+		editedAt: '2026-06-05T23:59:00.000Z',
+		type: 'article',
+		code: 'gabut_bersama_kak_althaaf',
+		source: 'GabutBersamaKakAlthaaf',
+		preview: 'Hi',
+		author: 'Althaaf'
 	}
 ]
